@@ -1,0 +1,36 @@
+recipes:
+- core
+- setup
+- readme
+- gems
+- tests
+- email
+- frontend
+- extras
+#- rubocop
+- deployment
+
+prefs:
+  :dev_webserver: unicorn
+  :prod_webserver: same
+  :database: postgresql
+  :templates: slim
+  :unit_test: rspec
+  :integration: cucumber
+  :fixtures: factory_girl
+  :frontend: bootstrap3
+  :form_builder: simple_form
+  :email: none
+  :authentication: none
+  :authorization: none
+  :pages: about
+
+gems:
+- bullet
+- lol_dba
+- rails-dev-boost
+- yard
+
+args:
+  :skip_test_unit: yes
+  :skip_active_record: false
