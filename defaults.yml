@@ -7,29 +7,58 @@ recipes:
 - email
 - frontend
 - extras
-#- rubocop
 - deployment
 
 prefs:
+  :apps4: none
+  :announcements: none
   :dev_webserver: unicorn
   :prod_webserver: same
   :database: postgresql
+  # left blank so that script will use the app name as the username
+  :pg_username: ''
+  :pg_host: localhost
+  # will raise error if pg user is not created
+  :drop_database: true
   :templates: slim
-  :unit_test: rspec
-  :integration: cucumber
-  :fixtures: factory_girl
   :frontend: bootstrap3
   :form_builder: simple_form
-  :email: none
+  :email: smtp
   :authentication: none
   :authorization: none
   :pages: about
+  :ban_spiders: true
+  :local_env_file: foreman
+  :quiet_assets: true
+  :better_errors: true
+  :pry: true
+  :rubocop: true
+  :tests: rspec
+  :continuous_testing: guard
+  :locale: none
+  :analytics: none
+  :github: false
+  :rvmrc: false
+  :jsruntime: false
+  :deployment: heroku
 
 gems:
-- bullet
-- lol_dba
-- rails-dev-boost
-- yard
+  - 
+    - bullet
+    - &grp_dev
+      :group: :development
+  -
+    - lol_dba
+    - *grp_dev
+  -
+    - rails-dev-boost
+    - *grp_dev
+  -
+    - yard
+    - :group: :doc
+  -
+    - rails-flog
+    - *grp_dev
 
 args:
   :skip_test_unit: yes
