@@ -34,7 +34,7 @@ prefs:
   :pry: true
   :rubocop: true
   :tests: rspec
-  :continuous_testing: guard
+  :continuous_testing: none
   :locale: none
   :analytics: none
   :github: false
@@ -45,20 +45,48 @@ prefs:
 gems:
   - 
     - bullet
-    - &grp_dev
-      :group: :development
+    - :group: :development
   -
     - lol_dba
-    - *grp_dev
+    - :group: :development
   -
     - rails-dev-boost
-    - *grp_dev
+    - :group: :development
   -
     - yard
     - :group: :doc
   -
     - rails-flog
-    - *grp_dev
+    - :group: :development
+  -
+    - traceroute
+    - :group: :development
+  -
+    - listen
+    - :group: :development
+  -
+    - consistency_fail
+    - :group:
+      - :development
+      - :test
+  -
+    - should_not
+    - :group:
+      - :development
+      - :test
+  -
+    - simplecov
+    - :group:
+      - :development
+      - :test
+  # For foreign keys and options when creating indexes 
+  - schema_plus
+  # Automatically defines validations based on db schema
+  - schema_validations
+  # Table and column comments
+  - migration_comments
+  # SQL like DSL
+  - squeel
 
 args:
   :skip_test_unit: yes
