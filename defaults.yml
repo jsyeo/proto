@@ -43,50 +43,50 @@ prefs:
   :deployment: heroku
 
 gems:
-  - 
-    - bullet
-    - :group: :development
-  -
-    - lol_dba
-    - :group: :development
-  -
-    - rails-dev-boost
-    - :group: :development
-  -
-    - yard
-    - :group: :doc
-  -
-    - rails-flog
-    - :group: :development
-  -
-    - traceroute
-    - :group: :development
-  -
-    - listen
-    - :group: :development
-  -
-    - consistency_fail
-    - :group:
-      - :development
-      - :test
-  -
-    - should_not
-    - :group:
-      - :development
-      - :test
-  -
-    - simplecov
-    - :group:
-      - :development
-      - :test
-  # For foreign keys and options when creating indexes 
-  - schema_plus
-  # Automatically defines validations based on db schema
-  - schema_validations
-  # Table and column comments
-  - migration_comments
-  # SQL like DSL
-  - squeel
+#  -
+#    - bullet
+#    - :group: :development
+#  -
+#    - lol_dba
+#    - :group: :development
+#  -
+#    - rails-dev-boost
+#    - :group: :development
+#  -
+#    - yard
+#    - :group: :doc
+#  -
+#    - rails-flog
+#    - :group: :development
+#  -
+#    - traceroute
+#    - :group: :development
+#  -
+#    - listen
+#    - :group: :development
+#  -
+#    - consistency_fail
+#    - :group:
+#      - :development
+#      - :test
+#  -
+#    - should_not
+#    - :group:
+#      - :development
+#      - :test
+#  -
+#    - simplecov
+#    - :group:
+#      - :development
+#      - :test
+#  # For foreign keys and options when creating indexes 
+#  - schema_plus
+#  # Automatically defines validations based on db schema
+#  - schema_validations
+#  # Table and column comments
+#  - migration_comments
+#  # SQL like DSL
+#  - squeel
 
 args:
   :skip_test_unit: yes
