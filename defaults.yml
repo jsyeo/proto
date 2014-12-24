@@ -43,6 +43,7 @@ prefs:
   :deployment: heroku
 
 gems:
+  - jquery-turbolinks
 #  -
 #    - bullet
 #    - :group: :development
