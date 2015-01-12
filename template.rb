@@ -95,7 +95,7 @@ def add_gem(*all) Gemfile.add(*all); end
 
 @recipes = ["core", "git", "railsapps", "learn_rails", "rails_bootstrap", "rails_foundation", "rails_omniauth", "rails_devise", "rails_devise_roles", "rails_devise_pundit", "rails_signup_download", "rails_mailinglist_activejob", "rails_stripe_checkout", "setup", "readme", "gems", "tests", "email", "locale", "devise", "omniauth", "roles", "frontend", "pages", "init", "analytics", "extras", "deployment"]
 @prefs = {:apps4=>"none", :announcements=>"none", :dev_webserver=>"unicorn", :prod_webserver=>"same", :database=>"postgresql", :pg_username=>"", :pg_host=>"localhost", :drop_database=>true, :templates=>"slim", :frontend=>"bootstrap3", :form_builder=>"simple_form", :email=>"smtp", :authentication=>"none", :authorization=>"none", :pages=>"about", :ban_spiders=>true, :local_env_file=>"foreman", :quiet_assets=>true, :better_errors=>true, :pry=>true, :rubocop=>true, :tests=>"rspec", :continuous_testing=>"none", :locale=>"none", :analytics=>"none", :github=>false, :rvmrc=>false, :jsruntime=>false, :deployment=>"heroku"}
-@gems = [["bullet", {:group=>:development}], ["lol_dba", {:group=>:development}], ["rails-dev-boost", {:group=>:development}], ["yard", {:group=>:doc}], ["rails-flog", {:group=>:development}], ["traceroute", {:group=>:development}], ["listen", {:group=>:development}], ["consistency_fail", {:group=>[:development, :test]}], ["should_not", {:group=>[:development, :test]}], ["simplecov", {:group=>[:development, :test]}], "schema_plus", "schema_validations", "migration_comments", "squeel"]
+@gems = ["jquery-turbolinks", ["did_you_mean", {:group=>[:development, :test]}], ["pry-byebug", {:group=>[:development, :test]}]]
 @diagnostics_recipes = [["example"], ["setup"], ["railsapps"], ["gems", "setup"], ["gems", "readme", "setup"], ["extras", "gems", "readme", "setup"], ["example", "git"], ["git", "setup"], ["git", "railsapps"], ["gems", "git", "setup"], ["gems", "git", "readme", "setup"], ["extras", "gems", "git", "readme", "setup"], ["email", "extras", "frontend", "gems", "git", "init", "railsapps", "readme", "setup", "testing"], ["core", "email", "extras", "frontend", "gems", "git", "init", "railsapps", "readme", "setup", "testing"], ["core", "email", "extras", "frontend", "gems", "git", "init", "railsapps", "readme", "setup", "testing"], ["core", "email", "extras", "frontend", "gems", "git", "init", "railsapps", "readme", "setup", "testing"], ["email", "example", "extras", "frontend", "gems", "git", "init", "railsapps", "readme", "setup", "testing"], ["email", "example", "extras", "frontend", "gems", "git", "init", "railsapps", "readme", "setup", "testing"], ["email", "example", "extras", "frontend", "gems", "git", "init", "railsapps", "readme", "setup", "testing"], ["apps4", "core", "email", "extras", "frontend", "gems", "git", "init", "railsapps", "readme", "setup", "testing"], ["apps4", "core", "email", "extras", "frontend", "gems", "git", "init", "railsapps", "readme", "setup", "tests"], ["apps4", "core", "deployment", "email", "extras", "frontend", "gems", "git", "init", "railsapps", "readme", "setup", "testing"], ["apps4", "core", "deployment", "email", "extras", "frontend", "gems", "git", "init", "railsapps", "readme", "setup", "tests"], ["apps4", "core", "deployment", "devise", "email", "extras", "frontend", "gems", "git", "init", "omniauth", "pundit", "railsapps", "readme", "setup", "tests"]]
 @diagnostics_prefs = []
 diagnostics = {}
@@ -380,7 +380,7 @@ when "4"
           ["rails-signup-download", "rails-signup-download"],
           ["rails-stripe-checkout", "rails-stripe-checkout"]]
         else
-          prefs[:apps4] = multiple_choice "Choose a starter application.",
+          prefs[:apps4] = multiple_choice "Upgrade to Rails 4.2 for more choices.",
           [["learn-rails", "learn-rails"],
           ["rails-bootstrap", "rails-bootstrap"],
           ["rails-foundation", "rails-foundation"],
@@ -447,16 +447,14 @@ if prefer :apps4, 'learn-rails'
   prefs[:pages] = 'none'
   prefs[:locale] = 'none'
   prefs[:analytics] = 'none'
+  prefs[:rubocop] = false
 
   # gems
-  add_gem 'activerecord-tableless'
   add_gem 'high_voltage'
   add_gem 'gibbon'
   add_gem 'google_drive'
   gsub_file 'Gemfile', /gem 'sqlite3'\n/, ''
   add_gem 'sqlite3', :group => :development
-  add_gem 'pg', :group => :production
-  add_gem 'thin', :group => :production
   add_gem 'rails_12factor', :group => :production
 
   stage_three do
@@ -526,6 +524,7 @@ if prefer :apps4, 'rails-bootstrap'
   prefs[:quiet_assets] = true
   prefs[:pages] = 'about'
   prefs[:locale] = 'none'
+  prefs[:rubocop] = false
 end
 # >----------------------- recipes/rails_bootstrap.rb ------------------------end<
 # >-------------------------- templates/recipe.erb ---------------------------end<
@@ -555,6 +554,7 @@ if prefer :apps4, 'rails-foundation'
   prefs[:quiet_assets] = true
   prefs[:pages] = 'about'
   prefs[:locale] = 'none'
+  prefs[:rubocop] = false
 end
 # >----------------------- recipes/rails_foundation.rb -----------------------end<
 # >-------------------------- templates/recipe.erb ---------------------------end<
@@ -582,6 +582,7 @@ if prefer :apps4, 'rails-omniauth'
   prefs[:quiet_assets] = true
   prefs[:pages] = 'about+users'
   prefs[:locale] = 'none'
+  prefs[:rubocop] = false
 end
 # >------------------------ recipes/rails_omniauth.rb ------------------------end<
 # >-------------------------- templates/recipe.erb ---------------------------end<
@@ -608,6 +609,7 @@ if prefer :apps4, 'rails-devise'
   prefs[:quiet_assets] = true
   prefs[:pages] = 'users'
   prefs[:locale] = 'none'
+  prefs[:rubocop] = false
 end
 # >------------------------- recipes/rails_devise.rb -------------------------end<
 # >-------------------------- templates/recipe.erb ---------------------------end<
@@ -633,6 +635,7 @@ if prefer :apps4, 'rails-devise-roles'
   prefs[:quiet_assets] = true
   prefs[:pages] = 'users'
   prefs[:locale] = 'none'
+  prefs[:rubocop] = false
 end
 # >---------------------- recipes/rails_devise_roles.rb ----------------------end<
 # >-------------------------- templates/recipe.erb ---------------------------end<
@@ -658,6 +661,7 @@ if prefer :apps4, 'rails-devise-pundit'
   prefs[:quiet_assets] = true
   prefs[:pages] = 'users'
   prefs[:locale] = 'none'
+  prefs[:rubocop] = false
 end
 # >--------------------- recipes/rails_devise_pundit.rb ----------------------end<
 # >-------------------------- templates/recipe.erb ---------------------------end<
@@ -686,6 +690,7 @@ if prefer :apps4, 'rails-signup-download'
   prefs[:secrets] = ['mailchimp_list_id', 'mailchimp_api_key']
   prefs[:pages] = 'users'
   prefs[:locale] = 'none'
+  prefs[:rubocop] = false
 
   # gems
   add_gem 'gibbon'
@@ -755,6 +760,7 @@ if prefer :apps4, 'rails-mailinglist-activejob'
   prefs[:secrets] = ['mailchimp_list_id', 'mailchimp_api_key']
   prefs[:pages] = 'about'
   prefs[:locale] = 'none'
+  prefs[:rubocop] = false
 
   # gems
   add_gem 'gibbon'
@@ -837,6 +843,7 @@ if prefer :apps4, 'rails-stripe-checkout'
     'mailchimp_api_key']
   prefs[:pages] = 'users'
   prefs[:locale] = 'none'
+  prefs[:rubocop] = false
 
   # gems
   add_gem 'gibbon'
